@@ -36,7 +36,7 @@ dummyBackend.isPrepared = function(song) {
 
 dummyBackend.search = function(query, callback, errCallback) {
     var results = {};
-    var results.songs = {};
+    results.songs = {};
 
     if(query.terms === 'shouldCauseError') {
         errCallback('dummy search error');
