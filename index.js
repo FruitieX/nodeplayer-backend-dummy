@@ -10,6 +10,8 @@ var logger;
 var encodeSong = function(origStream, seek, song, progCallback, errCallback) {
     if (song.songID === 'shouldCauseError') {
         errCallback(song, 'dummy encoding error');
+    } else if (song.songID === 'shouldPrepareForever') {
+        progCallback(song, 1024, false);
     } else {
         progCallback(song, 1024, false);
         progCallback(song, 1024, false);
