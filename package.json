@@ -1,6 +1,6 @@
 {
   "name": "nodeplayer-backend-dummy",
-  "version": "0.1.9",
+  "version": "0.1.91",
   "description": "dummy backend for nodeplayer",
   "main": "index.js",
   "scripts": {
