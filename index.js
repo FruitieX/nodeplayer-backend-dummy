@@ -25,7 +25,7 @@ var encodeSong = function(origStream, seek, song, progCallback, errCallback) {
 };
 
 dummyBackend.prepareSong = function(song, progCallback, errCallback) {
-    if(song.songID === 'shouldBePrepared') {
+    if (song.songID === 'shouldBePrepared') {
         progCallback(song, true, true);
     } else {
         return encodeSong(null, 0, song, progCallback, errCallback);
@@ -40,7 +40,7 @@ dummyBackend.search = function(query, callback, errCallback) {
     var results = {};
     results.songs = {};
 
-    if(query.terms === 'shouldCauseError') {
+    if (query.terms === 'shouldCauseError') {
         errCallback('dummy search error');
     } else {
         for (var i = 0; i < config.searchResultCnt; i++) {
