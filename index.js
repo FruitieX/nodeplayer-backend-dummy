@@ -1,9 +1,16 @@
+'use strict';
+
+var MODULE_NAME = 'dummy';
+var MODULE_TYPE = 'backend';
+
 var _ = require('underscore');
 
-var dummyBackend = {};
-dummyBackend.name = 'dummy';
+var nodeplayerConfig = require('nodeplayer').config;
+var coreConfig = nodeplayerConfig.getConfig();
 
-var config;
+var dummyBackend = {};
+dummyBackend.name = MODULE_NAME;
+
 var player;
 var logger;
 
@@ -43,7 +50,7 @@ dummyBackend.search = function(query, callback, errCallback) {
     if (query.terms === 'shouldCauseError') {
         errCallback('dummy search error');
     } else {
-        for (var i = 0; i < config.searchResultCnt; i++) {
+        for (var i = 0; i < coreConfig.searchResultCnt; i++) {
             results.songs['dummyId' + i] = {
                 artist: 'dummyArtist' + i,
                 title: 'dummyTitle' + i,
@@ -52,7 +59,7 @@ dummyBackend.search = function(query, callback, errCallback) {
                 duration: 123456,
                 songID: 'dummyId' + i,
                 score: i,
-                backendName: 'dummy',
+                backendName: MODULE_NAME,
                 format: 'opus'
             };
         }
@@ -63,7 +70,6 @@ dummyBackend.search = function(query, callback, errCallback) {
 
 dummyBackend.init = function(_player, _logger, callback) {
     player = _player;
-    config = _player.config;
     logger = _logger;
 
     if (player.dummyShouldError) {
